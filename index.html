@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Risk Profile Questionnaire - SK Financials & Insurance Advisory</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Basic Information Form -->
+        <div id="basicInfoForm" class="form-section active">
+            <div class="header">
+                <div class="icon-container">
+                    <img src="WhatsApp Image 2025-08-08 at 21.00.02_eafc0751.jpg" alt="SK Photo" class="profile-icon">
+                </div>
+                <h1>Risk Profile Questionnaire</h1>
+                <p>SK Financials & Insurance Advisory - Please provide your basic information to continue</p>
+            </div>
+
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="name">
+                        <i class="fas fa-user"></i>
+                        Name *
+                    </label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="fullName">
+                        <i class="fas fa-user"></i>
+                        Full Name *
+                    </label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="mobileNo">
+                        <i class="fas fa-phone"></i>
+                        Mobile Number *
+                    </label>
+                    <input type="tel" id="mobileNo" placeholder="Enter your mobile number" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="emailId">
+                        <i class="fas fa-envelope"></i>
+                        Email ID *
+                    </label>
+                    <input type="email" id="emailId" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="workCity">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Work City *
+                    </label>
+                    <input type="text" id="workCity" placeholder="Enter your work city" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="occupation">
+                        <i class="fas fa-briefcase"></i>
+                        Occupation *
+                    </label>
+                    <select id="occupation" required>
+                        <option value="" disabled selected>Select your occupation</option>
+                        <option value="job">Job</option>
+                        <option value="business">Business</option>
+                    </select>
+                </div>
+
+                <!-- Hidden Company Name field -->
+                <div id="companyNameContainer" class="input-group company-field" style="display:none;">
+                    <label for="companyName">
+                        <i class="fas fa-building"></i>
+                        Company Name *
+                    </label>
+                    <input type="text" id="companyName" placeholder="Enter your company name">
+                </div>
+
+                <!-- Hidden Company Domain field -->
+                <div id="companyDomainContainer" class="input-group company-field" style="display:none;">
+                    <label for="companyDomain">
+                        <i class="fas fa-globe"></i>
+                        Sector *
+                    </label>
+                    <input type="text" id="companyDomain" placeholder="Enter your company domain (e.g., technology, finance, healthcare)">
+                </div>
+
+                <button type="button" id="continueBtn" class="btn btn-primary" disabled>
+                    Continue to Questionnaire
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Questionnaire Form -->
+        <div id="questionnaireForm" class="form-section">
+            <div class="header">
+                <div class="icon-container">
+                    <img src="WhatsApp Image 2025-08-08 at 21.00.02_eafc0751.jpg" alt="SK Photo" class="profile-icon">
+                </div>
+                <h1>Questionnaire</h1>
+                <p>Answer the following questions to determine your risk profile</p>
+            </div>
+
+            <div class="form-content">
+                <div class="progress-info">
+                    <span id="progressText">0/0 completed</span>
+                    <div class="progress-bar" aria-hidden="true">
+                        <div id="progressFill" class="progress-fill" style="width:0%;"></div>
+                    </div>
+                </div>
+
+                <div id="questionsContainer"></div>
+
+                <div class="navigation-buttons">
+                    <button id="backBtn" class="btn btn-secondary" type="button">Back</button>
+                    <button id="submitBtn" class="btn btn-success" type="button" disabled>Submit Assessment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="form-section">
+            <div class="header">
+                <div class="icon-container">
+                    <img src="WhatsApp Image 2025-08-08 at 21.00.02_eafc0751.jpg" alt="SK Photo" class="profile-icon">
+                </div>
+                <h1>Assessment Results</h1>
+                <p>Your personalised risk profile and recommendations</p>
+            </div>
+
+            <div class="results-content">
+                <div class="profile-card">
+                    <h2 id="profileType">-</h2>
+                    <div class="score-display">Score: <span id="totalScore">0</span>/120</div>
+                    <div id="scoreRange"></div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3><i class="fas fa-user"></i> Participant Info</h3>
+                        <div id="participantInfo"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3><i class="fas fa-chart-line"></i> Assessment Summary</h3>
+                        <div id="assessmentSummary"></div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button id="retakeBtn" class="btn btn-primary" type="button">Retake Assessment</button>
+                    <button id="clearStorageBtn" class="btn btn-secondary" type="button">Clear Stored Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
