@@ -1,3 +1,4 @@
+
 // Risk Profile Questionnaire JavaScript - Updated Version
 // SK Financials & Insurance Advisory
 
@@ -758,6 +759,8 @@ function calculateResults() {
     
     // Display results
     displayResults(results);
+    sendResultsToGoogleSheets(results);
+
     
     // Show results section
     const questionnaireForm = document.getElementById('questionnaireForm');
@@ -769,6 +772,42 @@ function calculateResults() {
         console.log('Showing results section');
     }
 }
+
+function sendResultsToGoogleSheets(results) {
+    const url = "https://script.google.com/macros/s/AKfycbzKT2S9LHMkMKZ956O-IK5SSXe6rSg__wImFv4pGMEcclUjr9U5ZiQ9W2VKa8szQjUX9A/exec";
+
+    // Send each answer as a separate row
+// Build a structured payload
+const payload = {
+    fullName: results.userInfo.fullName,
+    emailId: results.userInfo.emailId,
+    mobileNo: results.userInfo.mobileNo,
+    workCity: results.userInfo.workCity,
+    occupation: results.userInfo.occupation,
+    companyName: results.userInfo.companyName,
+    companyDomain: results.userInfo.companyDomain,
+    totalScore: results.totalScore,
+    profileName: results.profile.name,
+    responses: results.userAnswers.map(answerObj => ({
+        question: answerObj.question,  // acts like the header
+        answer: answerObj.answer,      // value below header
+        score: answerObj.score
+    }))
+};
+
+// Send once instead of per-answer
+fetch(url, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+})
+.then(res => res.json())
+.then(data => console.log("Submission success:", data))
+.catch(err => console.error("Submission error:", err));
+
+}
+
 
 // Display results
 function displayResults(results) {
